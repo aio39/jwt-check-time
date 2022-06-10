@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "no"
+    "url": "https://github.com/aio39/jwt-check-time"
   },
   "keywords": [
     "jwt",
@@ -21,7 +21,10 @@
     "refresh",
     "token"
   ],
-  "author": "aio39",
+  "author": {
+    "name": "aio39",
+    "email": "aiodev.js@gmail.com"
+  },
   "license": "ISC",
   "files": [
     "lib"

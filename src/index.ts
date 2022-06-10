@@ -14,7 +14,10 @@ const defaultConfig: config = {
   expName: 'exp',
 };
 
-type CheckReturn = [isNotExpired: boolean, isLeft: boolean];
+type isNotExpired = boolean;
+type isLeft = boolean;
+
+type CheckReturn = [isNotExpired: isNotExpired, isLeft: isLeft];
 
 enum unit {
   s = 's',
@@ -103,9 +106,12 @@ class CheckJWT {
     return checkJwt;
   }
 
-  check(token: string): CheckReturn {
+  check(token: string | null): CheckReturn {
+    if (!token) return [false, false];
     const isNotExpired = this.checkIsOverTokenExp(token);
-    const isNotOverTime = this.checkIsOverLimitTime(token);
+    const isNotOverTime = isNotExpired
+      ? this.checkIsOverLimitTime(token)
+      : false;
     return [isNotExpired, isNotOverTime];
   }
 }
